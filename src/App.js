@@ -1,6 +1,7 @@
 import './App.css';
 import 'reactjs-popup/dist/index.css';
 import weddingLogo from './assets/weddingLogo.svg';
+import weddingLogoW from './assets/weddingLogoW.svg';
 import GoogleMap from './Components/GoogleMap';
 import HTMLFlipBook from "react-pageflip";
 import Popup from 'reactjs-popup';
@@ -18,7 +19,7 @@ function App() {
       <HTMLFlipBook width={400} height={660}>
         <div className="bg-purple-800">
           <div className='h-full grid justify-items-center content-center'>
-            <img className="h-60 w-70 object-cover text-white" src={weddingLogo} alt="Wedding logo" />
+            <img className="h-60 w-70 object-cover text-white" src={weddingLogoW} alt="Wedding logo" />
           </div>
         </div>
         <div className="py-3 px-4 bg-purple-800">
@@ -28,11 +29,11 @@ function App() {
                 <div className="shrink-0 mt-1 grid justify-items-center">
                   <img className="h-50 w-40 object-cover" src={weddingLogo} alt="Wedding logo" />
                 </div>
-                <div className="my-2 text-center grid justify-items-center">
+                <div className="text-center grid justify-items-center">
                   <p className="text-sm font-semibold mb-2">
                     Cordialmente estas invitado a la boda de:
                   </p>
-                  <p className="text-xl italic font-bold">
+                  <p className="text-[1.5em] font-bold font-['PinyonScript']">
                     Luisana y Nelson
                   </p>
                   <div className="border-y-2 w-[300px] border-slate-600">
@@ -51,9 +52,12 @@ function App() {
                   <div className="grid bg-slate-100 rounded-md text-center grid-cols-1 divide-x">
                     <div className='text-gray-400'>Lugar</div>
                     <div className='p-1'>
-                      <Popup trigger={<button className='rounded-full bg-purple-600 hover:bg-purple-400 p-2 text-slate-200'>Presioname</button>} position="top">
+                      <Popup trigger={<button className='not-print rounded-full bg-purple-600 hover:bg-purple-400 p-2 text-slate-200'>Presioname</button>} position="top">
                         <GoogleMap />
                       </Popup>
+                      <p className="printable text-center">
+                        Av. La limpia diagonal a tostadas el reloj, salon Mi Chinita encima de la floristeria.
+                      </p>
                     </div>
                   </div>
                   <div className='text-center'>

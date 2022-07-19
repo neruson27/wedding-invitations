@@ -17,6 +17,19 @@
   }
 }
 
+.printable {
+  display: none;
+}
+
+@media print {
+  .not-print {
+    display: none;
+  }
+  .printable {
+    display: block
+  }
+}  
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
