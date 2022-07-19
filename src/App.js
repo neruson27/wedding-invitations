@@ -1,12 +1,16 @@
 import './App.css';
+import 'reactjs-popup/dist/index.css';
 import weddingLogo from './assets/weddingLogo.svg';
+import GoogleMap from './Components/GoogleMap';
 import HTMLFlipBook from "react-pageflip";
+import Popup from 'reactjs-popup';
 
 function App() {
-  const token = 'asd';
+  const token = '123';
   const invitate = {
     name: 'mock',
-    table: 4
+    table: 4,
+    persons: 4
   }
 
   return (
@@ -17,44 +21,58 @@ function App() {
             <img className="h-60 w-70 object-cover text-white" src={weddingLogo} alt="Wedding logo" />
           </div>
         </div>
-        <div className="py-7 px-4 bg-purple-800">
+        <div className="py-3 px-4 bg-purple-800">
           {token ? (
-          <div className="max-w-md mx-auto bg-white rounded-md shadow-md overflow-hidden">
-            <div className="">
-              <div className="shrink-0 grid justify-items-center">
-                <p className="mt-2 text-medium text-slate-400">Nos casamos!</p>
-                <img className="h-60 w-70 object-cover" src={weddingLogo} alt="Wedding logo" />
-              </div>
-              <div className="p-6">
-                <div className="capitalize tracking-wide text-sm text-purple-500 font-semibold">Saludos {invitate.name}</div>
-                <p className="block mt-1 text-center text-md leading-tight font-medium text-slate-400 hover:underline">"El amor nunca se da por vencido, jamas pierde la fe, siempre teiene esperanzas y se mantiene firme en toda circunstancia".</p>
-                <p className="mt-2 mb-2 text-justify text-slate-600 font-bold">Queremos compartir contigo en nuestro matrimonio por eso te invitamos este 29 de julio no te olvides de venir.</p>
-                <div className="grid bg-slate-100 rounded-md text-center grid-cols-3 divide-x">
-                  <div className='text-gray-400'>Fecha</div>
-                  <div className='text-gray-400'>Hora</div>
-                  <div className='text-gray-400'>Lugar</div>
-                  <div className='p-2 mt-2 text-gray-400 font-bold'>29/JUL</div>
-                  <div className='p-2 mt-2 text-gray-400 font-bold'>2:30pm</div>
-                  <div className='p-2'>
-                    <button className='rounded-full bg-purple-600 hover:bg-purple-400 p-2 text-slate-200'>Presioname</button>
+            <div className="max-w-md mx-auto bg-white rounded-md shadow-md overflow-hidden">
+              <div className="border-4 border-slate-500">
+                <div className="shrink-0 mt-1 grid justify-items-center">
+                  <img className="h-50 w-40 object-cover" src={weddingLogo} alt="Wedding logo" />
+                </div>
+                <div className="my-2 text-center grid justify-items-center">
+                  <p className="text-sm font-semibold mb-2">
+                    Cordialmente estas invitado a la boda de:
+                  </p>
+                  <p className="text-xl italic font-bold">
+                    Luisana y Nelson
+                  </p>
+                  <div className="border-y-2 w-[300px] border-slate-600">
+                    <p>
+                      29 DE JULIO DEL 2022
+                    </p>
+                  </div>
+                  <p>
+                    2:00 PM
+                  </p>
+                </div>
+                <div className="p-4">
+                  <div className="capitalize tracking-wide text-sm text-purple-500 font-semibold">Saludos {invitate.name}</div>
+                  <p className="block mt-1 text-center text-md leading-tight font-medium text-slate-400 hover:underline">"El amor nunca se da por vencido, jamas pierde la fe, siempre teiene esperanzas y se mantiene firme en toda circunstancia".</p>
+                  <p className="mt-2 mb-2 text-justify text-slate-600 font-bold">Queremos compartir contigo en nuestro matrimonio por eso te invitamos este 29 de julio no te olvides de venir.</p>
+                  <div className="grid bg-slate-100 rounded-md text-center grid-cols-1 divide-x">
+                    <div className='text-gray-400'>Lugar</div>
+                    <div className='p-1'>
+                      <Popup trigger={<button className='rounded-full bg-purple-600 hover:bg-purple-400 p-2 text-slate-200'>Presioname</button>} position="top">
+                        <GoogleMap />
+                      </Popup>
+                    </div>
+                  </div>
+                  <div className='text-center'>
+                    <p className='mt-2 text-slate-400'>Tu mesa es la #{invitate.table}</p>
+                    <p className='mt-2 text-slate-300'>Pase valido para {invitate.persons} personas</p>
                   </div>
                 </div>
-                <div className='text-center'>
-                  <p className='mt-2 text-slate-300'>Tu mesa es la #{invitate.table}</p>
-                </div>
               </div>
             </div>
-          </div>
           ) :
-          (<>
-            <div className='bg-white grid justify-items-center content-center py-4 h-full w-50'>
-              <img className="h-60 w-70 object-cover" src={weddingLogo} alt="Wedding logo" />
-            </div>
-          </>)}
+            (<>
+              <div className='bg-white grid justify-items-center content-center py-4 h-full w-50'>
+                <img className="h-60 w-70 object-cover" src={weddingLogo} alt="Wedding logo" />
+              </div>
+            </>)}
         </div>
       </HTMLFlipBook>
     </div>
-    
+
   );
 }
 
