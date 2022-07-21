@@ -37,22 +37,22 @@ function Admin() {
   return ( 
     <div className="h-[100vh] bg-purple-400 flex flex-row justify-center items-center">
       <div className="h-[80vh] md:h-[70vh] w-[70vw] bg-white rounded-lg shadow-lg grid justify-center">
-      <Tabs className="w-[65vw] mt-2" value="guests">
-        <TabsHeader>
-          {data.map(({ label, value }) => (
-            <Tab key={value} value={value}>
-              {label}
-            </Tab>
-          ))}
-        </TabsHeader>
-        <TabsBody>
-          {data.map(({ value, content }) => (
-            <TabPanel key={value} value={value}>
-              {content}
-            </TabPanel>
-          ))}
-        </TabsBody>
-      </Tabs>
+        <Tabs className="w-[65vw] mt-2" value="guests">
+          <TabsHeader className="bg-blue-50">
+            {data.map(({ label, value }) => (
+              <Tab className="bg-white border-2 rounded-xl text-blue-900 hover:cursor-pointer" key={value} value={value}>
+                {label}
+              </Tab>
+            ))}
+          </TabsHeader>
+          <TabsBody>
+            {data.map(({ value, content }) => (
+              <TabPanel key={value} value={value}>
+                {content}
+              </TabPanel>
+            ))}
+          </TabsBody>
+        </Tabs>
       </div>
     </div>
   );
