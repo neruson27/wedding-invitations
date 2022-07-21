@@ -1,21 +1,31 @@
+import { useState, useEffect, useCallback } from 'react';
+import { useParams } from "react-router-dom";
+import HTMLFlipBook from 'react-pageflip';
+import Popup from 'reactjs-popup';
+
 import './App.css';
 import 'reactjs-popup/dist/index.css';
 import weddingLogo from './assets/weddingLogo.svg';
 import weddingLogoW from './assets/weddingLogoW.svg';
 import GoogleMap from './Components/GoogleMap';
-import HTMLFlipBook from "react-pageflip";
-import Popup from 'reactjs-popup';
+import backendInvitations from './clients/backendInvitations';
 
 function App() {
-  const token = '123';
-  const invitate = {
-    name: 'mock',
-    table: 4,
-    persons: 4
-  }
+  const { id } = useParams();
+  const [invitate, setInvitate] = useState({});
+
+  const fetchData = useCallback(async () => {
+    const response = await backendInvitations('get', `/guest/get/${id}`)
+    setInvitate(response.data)
+  }, [id])
+
+  useEffect(() => {
+    fetchData()
+      .catch(console.error)
+  }, [fetchData]);
 
   return (
-    <div className='w-full h-[98vh] grid justify-items-center content-center'>
+    <div className='w-full h-[100vh] bg-purple-400 grid justify-items-center content-center'>
       <HTMLFlipBook width={400} height={660}>
         <div className="bg-purple-800">
           <div className='h-full grid justify-items-center content-center'>
@@ -23,7 +33,7 @@ function App() {
           </div>
         </div>
         <div className="py-3 px-4 bg-purple-800">
-          {token ? (
+          {id ? (
             <div className="max-w-md mx-auto bg-white rounded-md shadow-md overflow-hidden">
               <div className="border-4 border-slate-500">
                 <div className="shrink-0 mt-1 grid justify-items-center">
@@ -76,7 +86,6 @@ function App() {
         </div>
       </HTMLFlipBook>
     </div>
-
   );
 }
 
