@@ -20,3 +20,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.popup-content {
+  width: 40vw !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .popup-content {
+    width: 80vw !important;
+  }
+}

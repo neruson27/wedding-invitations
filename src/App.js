@@ -63,7 +63,7 @@ function App() {
                     <div className='text-gray-400'>Lugar</div>
                     <div className='p-1'>
                       <Popup trigger={<button className='not-print rounded-full bg-purple-600 hover:bg-purple-400 p-2 text-slate-200'>Presioname</button>} position="top">
-                        <GoogleMap />
+                        <GoogleMap id={id} confirm={invitate.accepted}/>
                       </Popup>
                       <p className="printable text-center">
                         Av. La limpia diagonal a tostadas el reloj, salon Mi Chinita encima de la floristeria.
