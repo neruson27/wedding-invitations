@@ -35,31 +35,31 @@ function App() {
         <div className="py-3 px-4 bg-purple-800">
           {id ? (
             <div className="max-w-md mx-auto bg-white rounded-md shadow-md overflow-hidden">
-              <div className="border-4 border-slate-500">
+              <div className="border-4 border-purple-300">
                 <div className="shrink-0 mt-1 grid justify-items-center">
                   <img className="h-50 w-40 object-cover" src={weddingLogo} alt="Wedding logo" />
                 </div>
                 <div className="text-center grid justify-items-center">
-                  <p className="text-sm font-semibold mb-2">
+                  <p className="text-sm text-slate-600 font-bold">
                     Cordialmente estas invitado a la boda de:
                   </p>
-                  <p className="text-[1.5em] font-bold font-['PinyonScript']">
+                  <p className="text-[1.8em] font-bold font-['PinyonScript']">
                     Luisana y Nelson
                   </p>
                   <div className="border-y-2 w-[300px] border-slate-600">
-                    <p>
+                    <p className='italic'>
                       29 DE JULIO DEL 2022
                     </p>
                   </div>
-                  <p>
+                  <p className='italic'>
                     2:00 PM
                   </p>
                 </div>
-                <div className="p-4">
-                  <div className="capitalize tracking-wide text-sm text-purple-500 font-semibold">Saludos {invitate.name}</div>
-                  <p className="block mt-1 text-center text-md leading-tight font-medium text-slate-400 hover:underline">"El amor nunca se da por vencido, jamas pierde la fe, siempre teiene esperanzas y se mantiene firme en toda circunstancia".</p>
-                  <p className="mt-2 mb-2 text-justify text-slate-600 font-bold">Queremos compartir contigo en nuestro matrimonio por eso te invitamos este 29 de julio no te olvides de venir.</p>
-                  <div className="grid bg-slate-100 rounded-md text-center grid-cols-1 divide-x">
+                <div className="p-3">
+                  <div className="capitalize tracking-wide text-sm text-purple-600 font-bold">Saludos {invitate.name}</div>
+                  <p className="block mt-1 text-center text-md leading-tight font-medium text-slate-400 hover:underline">"El amor nunca se da por vencido, jamas pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia".</p>
+                  <p className="mt-2 mb-2 text-center text-slate-600 font-bold">Queremos compartir contigo este dia tan importante, nuestro matrimonio civil, celebra junto a nosotros, Esperamos tu confirmacion.</p>
+                  <div className="grid bg-slate-50 rounded-md text-center grid-cols-1">
                     <div className='text-gray-400'>Lugar</div>
                     <div className='p-1'>
                       <Popup trigger={<button className='not-print rounded-full bg-purple-600 hover:bg-purple-400 p-2 text-slate-200'>Presioname</button>} position="top">
@@ -71,8 +71,8 @@ function App() {
                     </div>
                   </div>
                   <div className='text-center'>
-                    <p className='mt-2 text-slate-400'>Tu mesa es la #{invitate.table}</p>
-                    <p className='mt-2 text-slate-300'>Pase valido para {invitate.persons} personas</p>
+                    <p className='mt-1 font-medium text-slate-400'>Tu mesa es la #{invitate.table}</p>
+                    <p className='font-medium text-slate-400'>Pase valido para {invitate.persons} personas</p>
                   </div>
                 </div>
               </div>
