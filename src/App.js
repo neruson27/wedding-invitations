@@ -60,7 +60,7 @@ function App() {
                   <p className="block mt-1 text-center text-md leading-tight font-medium text-slate-400 hover:underline">"El amor nunca se da por vencido, jamas pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia".</p>
                   <p className="mt-2 mb-2 text-center text-slate-600 font-bold">Queremos compartir contigo este dia tan importante, nuestro matrimonio civil, celebra junto a nosotros, Esperamos tu confirmacion.</p>
                   <div className="grid bg-slate-50 rounded-md text-center grid-cols-1">
-                    <div className='text-gray-400'>Lugar</div>
+                    <div className='text-slate-400'>Lugar</div>
                     <div className='p-1'>
                       <Popup trigger={<button className='not-print rounded-full bg-purple-600 hover:bg-purple-400 p-2 text-slate-200'>Presioname</button>} position="top">
                         <GoogleMap id={id} confirm={invitate.accepted}/>
