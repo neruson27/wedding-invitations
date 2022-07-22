@@ -35,7 +35,7 @@ function AddGuest(props) {
           Nombre / Apellido
         </label>
         <input 
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="appearance-none border-2 border-purple-200 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="name"
           type="text"
           placeholder="Nombre / Apellido"
@@ -50,7 +50,7 @@ function AddGuest(props) {
           Mesa
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          className="appearance-none border-2 border-purple-200 rounded-lg w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           id="table"
           type="number"
           placeholder="0"
@@ -66,7 +66,7 @@ function AddGuest(props) {
           Personas
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          className="appearance-none border-2 border-purple-200 rounded-lg w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           id="persons"
           type="number"
           placeholder="0"

@@ -36,9 +36,9 @@ function Guests() {
   }, [fetchData]);
 
   return (
-    <div className='h-[50vh] grid grid-rows-4 auto-rows-min md:auto-rows-max justify-center content-between'>
-      <table className="table-auto w-[60vw]">
-        <thead>
+    <div className='h-[50vh] grid justify-center content-between'>
+      <table className="table-auto w-[60vw] bg-purple-300 rounded-lg text-white">
+        <thead className='bg-purple-400 rounded-t-xl'>
           <tr>
             <th>Invitado</th>
             <th>Mesa</th>
@@ -52,7 +52,7 @@ function Guests() {
         <tbody>
           {
             guests.map((guest) => (
-              <tr className='text-center' key={guest._id}>
+              <tr className='text-center divide-x-2' key={guest._id}>
                 <td>{guest.name}</td>
                 <td>{guest.table}</td>
                 <td>{guest.persons}</td>
@@ -67,10 +67,10 @@ function Guests() {
                   </span>
                 </td>
                 <td>{guest.acceptedDate ? new Date(guest.acceptedDate).toLocaleDateString() : '-----'}</td>
-                <td><div className='hover:cursor-pointer' onClick={() => deleteData(guest._id)}>🗑️</div></td>
+                <td><div className='hover:cursor-pointer bg-white my-2 rounded-xl' onClick={() => deleteData(guest._id)}>🗑️</div></td>
                 <td>
                   <div 
-                    className='hover:cursor-pointer'
+                    className='hover:cursor-pointer bg-white my-2 rounded-xl'
                     onClick={(e) => {
                       e.preventDefault()
                       copyTextToClipboard(`${process.env.REACT_APP_URL}/${guest._id}`)

@@ -1,12 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-} from "@material-tailwind/react";
+
 import useLocalStorage from "../utils/useLocalStorage";
 import AddGuest from "../Components/AddGuest";
 import Guests from "../Components/Guests";
@@ -14,6 +8,7 @@ import Guests from "../Components/Guests";
 function Admin() {
   const navigate = useNavigate();
   const [jwt] = useLocalStorage("jwt", '');
+  const [ selectedTab, setSelectedTab ] = useState("guests");
 
   useEffect(() => {
     if (!jwt) {
@@ -36,23 +31,23 @@ function Admin() {
 
   return ( 
     <div className="h-[100vh] bg-purple-400 flex flex-row justify-center items-center">
-      <div className="h-[80vh] md:h-[70vh] w-[70vw] bg-white rounded-lg shadow-lg grid justify-center">
-        <Tabs className="w-[65vw] mt-2" value="guests">
-          <TabsHeader className="bg-blue-50">
+      <div className="h-[80vh] md:h-[70vh] w-[70vw] bg-white rounded-lg border-purple-200 border-2 shadow-lg flex justify-center">
+        <div className="w-[65vw] mt-2" value="guests">
+          <div className="bg-blue-50 rounded-lg py-1 flex justify-between mb-2">
             {data.map(({ label, value }) => (
-              <Tab className="bg-white border-2 rounded-xl text-blue-900 hover:cursor-pointer" key={value} value={value}>
+              <div className={(value === selectedTab ? 'bg-purple-300 text-white border-2 border-purple-400' : 'text-blue-900' ) + ' rounded-xl hover:cursor-pointer text-center w-[50%] mx-2'} key={value} value={value} onClick={() => {setSelectedTab(value)}}>
                 {label}
-              </Tab>
+              </div>
             ))}
-          </TabsHeader>
-          <TabsBody>
+          </div>
+          <div>
             {data.map(({ value, content }) => (
-              <TabPanel key={value} value={value}>
-                {content}
-              </TabPanel>
+              <div key={value} value={value}>
+                {value === selectedTab ? content : <></>}
+              </div>
             ))}
-          </TabsBody>
-        </Tabs>
+          </div>
+        </div>
       </div>
     </div>
   );
