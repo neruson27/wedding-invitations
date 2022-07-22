@@ -7,6 +7,7 @@ import classNames from '../utils/classNames';
 function Guests() {
   const [jwt] = useLocalStorage('jwt', '');
   const [guests, setGuests] = useState([]);
+  const [showSpan, setShowSpan] = useState(false);
 
   const fetchData = useCallback(async () => {
     const response = await backendInvitations('get', `/guest`, undefined, jwt)
@@ -25,6 +26,10 @@ function Guests() {
   const copyTextToClipboard = async (text) => {
     if ('clipboard' in navigator) {
       await navigator.clipboard.writeText(text);
+      setShowSpan(true)
+      setTimeout(() => {
+        setShowSpan(false)
+      }, 1000);
     } else {
       document.execCommand('copy', true, text);
     }
@@ -36,8 +41,8 @@ function Guests() {
   }, [fetchData]);
 
   return (
-    <div className='h-[50vh] grid justify-center content-between'>
-      <table className="table-auto w-[60vw] bg-purple-300 rounded-lg text-white">
+    <div className='h-[60vh] grid justify-center content-between overflow-y-auto'>
+      <table className="table-auto h-[40vh] w-[60vw] bg-purple-300 rounded-lg text-white overflow-scroll">
         <thead className='bg-purple-400 rounded-t-xl'>
           <tr>
             <th>Invitado</th>
@@ -49,9 +54,9 @@ function Guests() {
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="">
           {
-            guests.map((guest) => (
+            guests.length > 0 ? guests.map((guest) => (
               <tr className='text-center divide-x-2' key={guest._id}>
                 <td>{guest.name}</td>
                 <td>{guest.table}</td>
@@ -78,10 +83,20 @@ function Guests() {
                   >🔗</div>
                 </td>
               </tr>
-            ))
+            )) : 
+            <tr className='text-center'>
+              sin invitados
+            </tr>
           }
         </tbody>
       </table>
+      {
+      showSpan ? 
+        <div class="p-4 mb-4 w-[20vw] text-sm text-white bg-purple-200 rounded-lg animate-ping" role="alert">
+          <span class="font-medium">Copiado!</span>
+        </div> :
+        null
+      }
     </div>
   );
 }
